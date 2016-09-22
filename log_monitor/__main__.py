@@ -1,7 +1,9 @@
 import pyinotify
 import mcparser
+import sys
 
-LOGFILE = '/var/log/minecraft/minecraft.log'
+LOGFILE = sys.getenv('LOGFILE', '/var/log/minecraft/minecraft.log')
+
 with open(LOGFILE) as fd:
 	lines = fd.readlines()
 	log_num_lines = len(lines)
