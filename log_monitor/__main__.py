@@ -1,8 +1,8 @@
 import pyinotify
 import mcparser
-import sys
+import os
 
-LOGFILE = sys.getenv('LOGFILE', '/var/log/minecraft/minecraft.log')
+LOGFILE = os.getenv('LOGFILE', '/var/log/minecraft/minecraft.log')
 
 with open(LOGFILE) as fd:
 	lines = fd.readlines()

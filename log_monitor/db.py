@@ -1,8 +1,8 @@
 import sqlite3
 import datetime
-import sys
+import os
 
-DATAFILE = sys.getenv('DATAFILE', '/var/minecraft/mc.db')
+DATAFILE = os.getenv('DATAFILE', '/var/minecraft/mc.db')
 
 class Db:
 	conn = None
