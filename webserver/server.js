@@ -56,7 +56,9 @@ console.log("DONE");
 //database connection
 
 
-var db_file = "/var/minecraft/mc.db"
+var db_file = process.env.DATAFILE;
+if(db_file === undefined)
+  db_file = "/var/minecraft/mc.db";
 var db;
 
 sqlite3(db_file).then(function(database){

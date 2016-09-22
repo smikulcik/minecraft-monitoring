@@ -1,13 +1,15 @@
 import sqlite3
 import datetime
-DATABASE = '/var/minecraft/mc.db'
+import sys
+
+DATAFILE = sys.getenv('DATAFILE', '/var/minecraft/mc.db')
 
 class Db:
 	conn = None
 	c = None
 
 	def __init__(self):
-		self.conn = sqlite3.connect(DATABASE)
+		self.conn = sqlite3.connect(DATAFILE)
 		self.c = self.conn.cursor()
 
 	def create_schema(self):
