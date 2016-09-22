@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Server status</title>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<style>
+		body { padding: 30px;}
+		.styledTable {
+			width: 100%;
+		}
+		.styledTable tr:nth-child(odd){ background-color:#eee; }
+		.styledTable tr:nth-child(even)    { background-color:#ccc; }
+		.styledTable thead { font-weight: bold;}
+		.styledTable td, th {
+			border: 1px solid black;
+			padding: 3px;
+		}
+		.styledTable tbody tr:hover {
+			background-color: yellow;
+		}
+#title {
+    text-align:center;
+}
+
+</style>
+</head>
+<body>
+    <h1 id='title'><a href='/'>Simon's Minecraft Server</a></h1>
+	<a href='/'>back</a>
+	<h1>Server Usage History</h1>
+	{{#each data}}
+		<h2>{{month}} </h2>
+			<h3>Total: {{total_playtime}} hours</h3>
+		<table class="styledTable">
+			<thead><th>Username</th><th>Time (hours)</th><th>Percentage Used</th><th>Suggested Donation</th></thead>
+		<tbody>
+		{{#each players}}
+			<tr>
+				<td>{{username}}</td>
+				<td>{{playtime}}</td>
+				<td>{{percent}}%</td>
+				<td>${{donation}}</td>
+			</tr>
+		{{/each}}
+		</tbody></table>
+	{{/each}}
+</body>
+</html>
