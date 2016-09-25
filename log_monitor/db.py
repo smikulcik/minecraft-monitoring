@@ -11,18 +11,17 @@ class Db:
 	def __init__(self):
 		self.conn = sqlite3.connect(DATAFILE)
 		self.c = self.conn.cursor()
+		self.create_schema()
 
 	def create_schema(self):
-		self.c.execute("DROP TABLE IF EXISTS players")
-		self.c.execute("DROP TABLE IF EXISTS session")
 		self.c.execute(
-			'''CREATE TABLE players(
+			'''CREATE TABLE IF NOT EXISTS players(
 				uuid CHAR(50) PRIMARY KEY	NOT NULL,
 				username text NOT NULL
 			)'''
 		)
 		self.c.execute(
-			'''CREATE TABLE sessions(
+			'''CREATE TABLE IF NOT EXISTS sessions(
 				id INTEGER PRIMARY KEY AUTOINCREMENT,
 				uuid CHAR(50)	NOT NULL,
 				start DATETIME,
